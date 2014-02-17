@@ -17,6 +17,7 @@ def get_setup_data(path):
     :rtype: dict
     """
     data = {}
+    path = os.path.abspath(path)
 
     # save old state
     old_setup = setuptools.setup
