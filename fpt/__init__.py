@@ -1,7 +1,7 @@
 import sys
 import os
 import setuptools
-import imp
+from importlib.machinery import SourceFileLoader
 
 
 def get_setup_data(path):
@@ -39,7 +39,7 @@ def get_setup_data(path):
 
     # import setup.py
     os.chdir(os.path.dirname(path))
-    imp.load_source('fake-load-setup-py', path)
+    SourceFileLoader('fake-load-setup-py', path).load_module()
 
     # cleanup
     for module in sys.modules.keys():
